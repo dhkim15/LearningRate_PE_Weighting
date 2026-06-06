@@ -20,8 +20,12 @@ Participants underwent ultra-high-field (7 T) spin-echo fMRI during a probabilis
 ```
 LearningRate_PE_Weighting/
 ├── scripts/
-│   ├── Fig1c.m          # Figure 1c: Value and PE time-series plots
-│   └── demodata/        # Example regressor files for one participant
+│   ├── Fig1c.m                        # Figure 1c: Value and PE time-series
+│   ├── Fig2bc_Fig3ab.m                # Figure 2b,c and Figure 3a,b
+│   ├── Fig3cd.m                       # Figure 3c,d: directional PE decomposition
+│   ├── PPE_Fig2bc_Fig3ab_sourcedata.xlsx  # Source data for Fig2b,c and Fig3a,b
+│   ├── PPE_Fig3cd_sourcedata.xlsx         # Source data for Fig3c,d
+│   └── demodata/                      # Example regressor files (one participant)
 │       ├── C1, C2, C3, C4            # CS onset files
 │       ├── U1, U2, U3                # US onset files
 │       ├── PE_Reward01.txt           # Reward PE regressor (α = 0.1)
@@ -35,37 +39,44 @@ LearningRate_PE_Weighting/
 └── README.md
 ```
 
-> Additional analysis scripts will be added upon acceptance.
-
 ---
 
 ## Data
 
-Full dataset (regressors, behavioral data, and source data for all figures) is available on OSF:  
+Full dataset (regressors, behavioral data, and figure source data) is available on OSF:  
 **https://osf.io/7j3sy**
 
 | Dataset | Location |
 |---|---|
-| FSL regressors (all participants) | OSF / regressor/ |
+| FSL regressors — all participants (001–020) | OSF / regressor/ |
 | Behavioral ratings | OSF / behavioral/ |
 | Figure source data | OSF / sourcedata/ |
-| MNI-space EPI | Available upon acceptance |
+| MNI-space fMRI data | Available upon acceptance |
 
 ---
 
 ## Usage
 
 ### Figure 1c
-
 1. Set MATLAB current directory to `scripts/`
 2. Run `Fig1c.m`
 
-The script loads regressor files from `scripts/demodata/` by default:
+Loads regressor files from `scripts/demodata/` by default:
 ```matlab
-baseDir = fullfile(pwd, 'demodata');  % relative to scripts/
+baseDir = fullfile(pwd, 'demodata');
 ```
 
-To use a different participant's data, change `baseDir` to the desired regressor folder.
+### Figure 2b, 2c, 3a, 3b
+1. Place `Fig2bc_Fig3ab.m` and `PPE_Fig2bc_Fig3ab_sourcedata.xlsx` in the same folder
+2. Set MATLAB current directory to that folder
+3. Run `Fig2bc_Fig3ab.m`
+4. Output: `Fig2bc.pdf`, `Fig2bc.png`, `Fig3ab.pdf`, `Fig3ab.png`
+
+### Figure 3c, 3d
+1. Place `Fig3cd.m` and `PPE_Fig3cd_sourcedata.xlsx` in the same folder
+2. Set MATLAB current directory to that folder
+3. Run `Fig3cd.m`
+4. Output: `Fig3cd.pdf`, `Fig3cd.png`
 
 ---
 
@@ -78,6 +89,8 @@ To use a different participant's data, change `baseDir` to the desired regressor
 | 03 | 0.3 |
 | 05 | 0.5 |
 | 07 | 0.7 |
+
+> Indices 04 and 06 are not used; numbering reflects α × 10.
 
 ---
 
